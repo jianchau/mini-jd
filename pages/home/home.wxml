@@ -1,0 +1,4 @@
+<!--pages/home/home.wxml-->
+<homeBanner></homeBanner>
+<homeNav></homeNav>
+<homeList></homeList>
