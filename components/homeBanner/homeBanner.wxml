@@ -1,2 +1,24 @@
 <!--components/homeBanner/homeBanner.wxml-->
-<view>轮播图</view>
+<view class="swiper">
+  <swiper
+  indicator-dots="{{true}}"
+  autoplay="{{true}}"
+  circular="{{true}}"
+  bindchange="handleChange"
+  >
+    <swiper-item wx:for="{{bannerlist}}" wx:key="bannerid">
+      <image src="{{item.bannerimg}}" mode="aspectFill" class="swiper-img"></image>
+    </swiper-item>
+  
+  </swiper>
+</view>
+
+<view class="banner-tips">
+  <view
+  wx:for="{{altarr}}" 
+  wx:key="index" 
+  class="{{ index===current_img ?'banner-tip banner-tip-active':'banner-tip'}}"
+  >
+    {{item}}
+</view>
+</view>

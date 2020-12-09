@@ -1,65 +1,82 @@
 // pages/cart/cart.js
+import {getPersonalCart,cartRecommend} from '../../api/cart'
+const app = getApp()
 Page({
-
-  /**
-   * Page initial data
-   */
   data: {
-
+    cartlist: [],
+    emptyFlag: true,
+    recommendlist: []
   },
 
-  /**
-   * Lifecycle function--Called when page load
-   */
   onLoad: function (options) {
 
   },
 
-  /**
-   * Lifecycle function--Called when page is initially rendered
-   */
   onReady: function () {
 
   },
 
-  /**
-   * Lifecycle function--Called when page show
-   */
   onShow: function () {
-
+    getPersonalCart({
+      token: app.globalData.token,
+      userid: app.globalData.userid
+    })
+    .then(res => {
+      if (res.data.code === '10119') {
+        wx.navigateTo({
+          url: '/pages/login/login',
+        })
+      }
+      if (res.data.code === '10009') {
+        this.setData({
+          emptyFlag: true
+        })
+      } 
+      else {
+        this.setData({
+          cartlist: res.data.data,
+          emptyFlag: false
+        })
+      }
+    })
+    .catch(err=>console.log(err))
+    cartRecommend({
+      token: app.globalData.token,
+    })
+    .then(res => {
+      const arr = res.data.data
+      arr&&arr.map(item => {
+        const price = (item.originprice * item.discount / 10).toFixed(2) + ''
+        price.indexOf('.') !== -1 ? (item.showPrice = price.split('.')[0]) : (item.showPrice = price)
+        price.indexOf('.') !== -1 ? item.otherPrice = price.split('.')[1] : item.otherPrice = '00'
+      })
+      this.setData({
+        recommendlist: res.data.data
+      })
+    })
   },
+  
 
-  /**
-   * Lifecycle function--Called when page hide
-   */
   onHide: function () {
 
   },
 
-  /**
-   * Lifecycle function--Called when page unload
-   */
+  
   onUnload: function () {
 
   },
 
-  /**
-   * Page event handler function--Called when user drop down
-   */
+ 
   onPullDownRefresh: function () {
 
   },
 
-  /**
-   * Called when page reach bottom
-   */
+ 
   onReachBottom: function () {
 
   },
 
-  /**
-   * Called when user click on the top right corner to share
-   */
+
   onShareAppMessage: function () {
 
   }

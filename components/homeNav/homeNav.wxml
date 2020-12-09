@@ -1,2 +1,11 @@
 <!--components/homeNav/homeNav.wxml-->
-<view>导航</view>
+<view class="nav">
+  <view wx:for="{{navlist}}" wx:key="icon" class="navitem">
+    <view class="img-nav">
+      <image src="{{item.icon}}" class="img"></image>
+    </view>
+    <view class="name-nav">
+      {{item.name}}
+    </view>
+  </view>
+</view>

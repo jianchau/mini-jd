@@ -1,22 +1,16 @@
-// components/homeList/homeList.js
 Component({
-  /**
-   * Component properties
-   */
+  
   properties: {
-
+    proData:Array
   },
+  
 
-  /**
-   * Component initial data
-   */
   data: {
 
   },
+  attached(){
 
-  /**
-   * Component methods
-   */
+  },
   methods: {
 
   }

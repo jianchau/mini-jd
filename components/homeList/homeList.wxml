@@ -1,2 +1,13 @@
 <!--components/homeList/homeList.wxml-->
-<view>列表</view>
+<view class="cols_1">
+  <navigator url="/pages/detail/detail?proid={{item.proid}}" class="proitem" wx:for="{{proData}}" wx:key="proid">
+    <view class="itemimg">
+      <image src="{{item.img1}}" class="image"></image>
+    </view>
+    <view class="iteminfo">
+      <view class="title">{{ item.proname }}</view>
+      <view class="price">¥<text>{{ item.showPrice }}</text>.{{ item.otherPrice }} </view>
+      <view class="category">{{ item.category }}</view>
+    </view>
+  </navigator>
+</view>

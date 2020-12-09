@@ -1,0 +1,7 @@
+/* components/cartlist/cartlist.wxss */
+.cartitem { display: flex; width: 120px;}
+.cartitem van-checkbox {display: flex; align-items: center; margin-right: 5px;}
+.van-card__header .van-card__thumb { width: 128px;}
+.itemright {margin-left: 30px;}
+.itemtitle {margin-left: 30px !important; height: 38px;}
+.itemprice { margin-left: 30px; color:#f66}

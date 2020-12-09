@@ -1,23 +1,40 @@
-// components/homeBanner/homeBanner.js
+import {getBannerlist} from '../../api/banner'
+
 Component({
-  /**
-   * Component properties
-   */
+  options:{
+    styleIsolation:"apply-shared"
+  },
+ 
   properties: {
 
   },
 
-  /**
-   * Component initial data
-   */
   data: {
-
+    bannerlist:[],
+    current_img:0,
+    altarr:[]
+  },
+  
+  attached(){
+    getBannerlist().then(res=>{
+      this.setData({
+        bannerlist:res.data.data.splice(0,4),
+      })
+      let arr = [];
+      this.data.bannerlist.forEach(item=>{
+        arr.push(item.alt)
+      })
+      this.setData({
+        altarr:arr
+      })  
+    })
   },
 
-  /**
-   * Component methods
-   */
   methods: {
-
+    handleChange(e){
+      this.setData({
+        current_img:e.detail.current
+      })
+    }
   }
 })

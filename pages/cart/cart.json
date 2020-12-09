@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "cartlist":"../../components/cartlist/cartlist",
+    "prolist": "./../../components/homeList/homeList",
+    "van-divider": "@vant/weapp/divider/index"
+  }
 }

@@ -1,1 +1,64 @@
 /* components/homeList/homeList.wxss */
+/* 左图右文 */
+.cols_1 .proitem {
+  width: 100%;
+  height: 110px;
+  border-bottom: 1rpx solid #ccc;
+  display: flex;
+}
+.cols_1 .proitem .itemimg{
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+}
+.proitem .itemimg .image{
+  width: 100%;
+  height: 100%;
+  border: 1rpx solid #ccc;
+}
+.cols_1 .proitem .iteminfo{
+  padding: 5px 8px;
+  flex: 1;
+}
+.proitem .iteminfo .title{
+  /* font-weight: 600; */
+  color: #333;
+  /* letter-spacing: 2px; */
+  /* 超出2行省略号 */
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.proitem .iteminfo .price{
+  color:#f66;
+  font-size: 12px;
+}
+.proitem .iteminfo .price text{
+  font-size: 18px;
+  font-weight: 600;
+}
+.proitem .iteminfo .category{
+  font-size: 12px;
+  font-weight: normal;
+  color: #999;
+}
+/* 上图下文 */
+.cols_2 {
+  display: flex;
+  flex-wrap: wrap;
+}
+.cols_2 .proitem {
+  width: 48%;
+  margin: 1%;
+  height: 300px;
+}
+.cols_2 .proitem .itemimg{
+  width: 100%;
+  height: 170px;
+}
+
+.cols_2 .proitem .iteminfo{
+  padding: 5px 8px;
+}

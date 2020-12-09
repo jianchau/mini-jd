@@ -1,22 +1,33 @@
-// components/homeNav/homeNav.js
+import {getNavs} from '../../api/nav/'
+import {setItem,getItem} from '../../utils/storage'
 Component({
-  /**
-   * Component properties
-   */
+  
   properties: {
 
   },
-
-  /**
-   * Component initial data
-   */
   data: {
-
+    navlist:[]
   },
-
-  /**
-   * Component methods
-   */
+  attached: function (){
+    getItem('navlist')?(
+      this.setData({
+        navlist:getItem('navlist')
+      })
+    ):(
+      getNavs().then(res=>{
+        let arr = res.data.data.splice(0,10).map(item=>{
+          return {
+            icon:item.icon,
+            name:item.name
+          }
+        })
+        this.setData({
+          navlist:arr
+        })
+        setItem('navlist',arr)
+      })
+    )
+  },
   methods: {
 
   }

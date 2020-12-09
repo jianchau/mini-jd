@@ -1,0 +1,26 @@
+<van-swipe-cell  wx:for="{{cartlist}}" wx:key="cartid" right-width="{{ 65 }}">
+  <van-card>
+      <view class="cartitem" slot="thumb">
+        <van-checkbox value="{{ item.flag }}" data-index="{{index}}" bind:change="selectItem" >  
+        </van-checkbox>
+        <image src="{{item.img1}}" style="width:80px;height:80px"></image>
+      </view>
+      <view class="itemtitle" slot="title" >
+        {{ item.proname }}
+      </view>
+      <view class="itemprice" slot="price" >
+        {{ item.originprice }}
+      </view>
+      <view class="itemright" slot="num">
+        <van-stepper value="{{ item.num }}" data-index="{{index}}" bind:change="onNumChange" />
+      </view>
+  </van-card>
+  <view style="background-color:#f66;width:65px;height:100%;color:#fff;text-align:center;line-height: 100px" slot="right" >删除</view>
+</van-swipe-cell>
+<van-submit-bar
+  price="{{ totalPrice*100}}"
+  button-text="去结算({{totalNum}})"
+>
+  <van-checkbox value="{{allFlag}}" bind:change="selectAll" > 全选
+  </van-checkbox>
+</van-submit-bar>

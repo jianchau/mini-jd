@@ -1,65 +1,46 @@
-// pages/home/home.js
+import {getProList} from '../../api/pro'
 Page({
-
-  /**
-   * Page initial data
-   */
   data: {
-
+    proData:[]
   },
-
-  /**
-   * Lifecycle function--Called when page load
-   */
   onLoad: function (options) {
-
+    getProList().then(res=>{
+      const arr = res.data.data[1]
+      arr.forEach(item=>{
+        const price = (item.originprice*item.discount/10).toFixed(2)+''
+        price.indexOf('.')>-1?(item.showPrice = price.split('.')[0]):(item.showPrice = price)
+        price.indexOf('.')>-1?(item.otherPrice = price.split('.')[1]):item.otherPrice = '00'
+      })
+      this.setData({
+        proData:arr
+      })
+    })
   },
 
-  /**
-   * Lifecycle function--Called when page is initially rendered
-   */
   onReady: function () {
 
   },
 
-  /**
-   * Lifecycle function--Called when page show
-   */
   onShow: function () {
 
   },
 
-  /**
-   * Lifecycle function--Called when page hide
-   */
   onHide: function () {
 
   },
 
-  /**
-   * Lifecycle function--Called when page unload
-   */
   onUnload: function () {
 
   },
 
-  /**
-   * Page event handler function--Called when user drop down
-   */
   onPullDownRefresh: function () {
 
   },
 
-  /**
-   * Called when page reach bottom
-   */
   onReachBottom: function () {
 
   },
 
-  /**
-   * Called when user click on the top right corner to share
-   */
   onShareAppMessage: function () {
 
   }

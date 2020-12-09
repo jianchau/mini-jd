@@ -1,2 +1,36 @@
-<!--pages/detail/detail.wxml-->
-<text>pages/detail/detail.wxml</text>
+<view class="detailbanner">
+  <swiper 
+    style="height: {{ screenWidth + 'px'}}"
+    circular="{{true}}"
+    bindchange="handleChange"
+  >
+    <swiper-item wx:for="{{ banners }}" wx:key="*this" bindtap="previewimg">
+      <image 
+        src="{{item}}" 
+        style="width:  {{ screenWidth + 'px'}};height: {{ screenWidth + 'px'}}"
+      ></image>
+    </swiper-item>
+    <view class="bannerTip">
+      <text>{{ current + 1 }}</text>/{{ banners.length}}
+    </view>
+    
+  </swiper>
+</view>
+
+<view>
+  ¥{{ showprice  }}
+</view>
+<view style="font-weight: bold">
+  {{ proname }}
+</view>
+<rich-text nodes="{{desc}}"></rich-text>
+
+<view style="height: 50px"></view>
+<van-goods-action>
+  <van-goods-action-icon icon="chat-o" text="客服" dot />
+  <van-goods-action-icon icon="cart-o" text="购物车" info="5" 
+  bind:click="toCart"/>
+  <van-goods-action-icon icon="shop-o" text="店铺" />
+  <van-goods-action-button text="加入购物车" type="warning" bind:click="addCart"/>
+  <van-goods-action-button text="立即购买" />
+</van-goods-action>

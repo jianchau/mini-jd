@@ -3,15 +3,14 @@
   "pages": [
     "pages/home/home",
     "pages/index/index",
-    "pages/logs/logs",
     "pages/mine/mine",
     "pages/cart/cart",
     "pages/activity/activity",
     "pages/detail/detail",
     "pages/kind/kind",
     "pages/register/register",
-    "pages/user/user"
-    
+    "pages/user/user",
+    "pages/login/login"
   ],
   "subPackages": [
     {
