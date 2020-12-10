@@ -17,7 +17,9 @@
       "root": "packageOrder",
       "name": "order",
       "pages": [
-        "pages/order"
+        "pages/confirm/confirm",
+        "pages/address/address",
+        "pages/addAddress/addAddress"
       ]
     },
     {

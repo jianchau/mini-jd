@@ -1,5 +1,6 @@
 import { getProDetail } from './../../api/pro'
-import {addCartFn} from './../../api/cart'
+import {addCartFn,getCartItems} from './../../api/cart'
+import {getItem} from '../../utils/storage'
 const app = getApp()
 Page({
   data: {
@@ -15,7 +16,9 @@ Page({
     stock: 0,
     screenWidth: app.globalData.screenWidth,
     current: 0,
-    showprice: 0
+    showprice: 0,
+    userid:getItem('userid'),
+    cartItems:0
   },
   handleChange(event) {
     this.setData({
@@ -28,6 +31,7 @@ Page({
       current: this.data.banners[this.data.current],
     })
   },
+
   toCart () {
     if (app.globalData.loginState) {
       wx.switchTab({
@@ -39,6 +43,7 @@ Page({
       })
     }
   },
+
   addCart () {
     if (app.globalData.loginState) {
       addCartFn({
@@ -48,7 +53,6 @@ Page({
         token: app.globalData.token
       })
       .then(res => {
-        console.log(res);
         if (res.data.code === '10119') {
           wx.showToast({
             title: '请先登录',
@@ -59,13 +63,16 @@ Page({
           })
         } 
         else {
+          
           wx.showToast({           
             title: '加入购物车成功',
             icon: 'none'
           })
+          this.setData({cartItems:this.data.cartItems+1})
         }
       }).catch(err=>console.log(err))
-    } else {
+    } 
+    else {
       wx.showToast({
         title: '请先登录',
         icon: 'none'
@@ -75,6 +82,7 @@ Page({
       })
     }
   },
+
   onLoad: function (options) {
     getProDetail({ proid: options.proid }).then(res => {
       const data = res.data[0]
@@ -90,6 +98,11 @@ Page({
         sales: data.sales,
         stock: data.stock,
         showprice: (data.originprice * data.discount / 10).toFixed(2)
+      })
+    })
+    getCartItems({userid:this.data.userid}).then(res=>{
+      this.setData({
+        cartItems:res.data.data
       })
     })
   },

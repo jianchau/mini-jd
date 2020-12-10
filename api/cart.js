@@ -21,3 +21,9 @@ export function updateCartAllFlag (params) {
 export function cartRecommend (params) {
   return request.get('/api/cart/cartRecommend', params)
 }
+export function getCartItems(params){
+  return request.get('/api/cart/cartItems',params)
+}
+export function deleteCart (params) {
+  return request.get('/api/cart/deleteCart', params)
+}

@@ -16,7 +16,6 @@
     
   </swiper>
 </view>
-
 <view>
   ¥{{ showprice  }}
 </view>
@@ -28,7 +27,7 @@
 <view style="height: 50px"></view>
 <van-goods-action>
   <van-goods-action-icon icon="chat-o" text="客服" dot />
-  <van-goods-action-icon icon="cart-o" text="购物车" info="5" 
+  <van-goods-action-icon icon="cart-o" text="购物车" info="{{cartItems===0?'':cartItems}}" 
   bind:click="toCart"/>
   <van-goods-action-icon icon="shop-o" text="店铺" />
   <van-goods-action-button text="加入购物车" type="warning" bind:click="addCart"/>

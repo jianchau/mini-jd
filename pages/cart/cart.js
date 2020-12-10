@@ -33,6 +33,13 @@ Page({
         })
       } 
       else {
+        let listarr = res.data.data
+        for(let x=0;x<listarr.length/2;x++){
+          let temp=listarr[x];
+          listarr[x]=listarr[listarr.length-1-x];
+          listarr[listarr.length-1-x]=temp;
+        }
+        console.log(listarr);
         this.setData({
           cartlist: res.data.data,
           emptyFlag: false

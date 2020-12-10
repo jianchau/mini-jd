@@ -15,11 +15,14 @@
         <van-stepper value="{{ item.num }}" data-index="{{index}}" bind:change="onNumChange" />
       </view>
   </van-card>
-  <view style="background-color:#f66;width:65px;height:100%;color:#fff;text-align:center;line-height: 100px" slot="right" >删除</view>
+  <view style="background-color:#f66;width:65px;height:100%;color:#fff;text-align:center;line-height: 100px" slot="right" data-cartid="{{item.cartid}}" data-index="{{index}}" bindtap="removeItem">删除</view>
+
 </van-swipe-cell>
 <van-submit-bar
   price="{{ totalPrice*100}}"
-  button-text="去结算({{totalNum}})"
+  button-text="去结算({{totalNum>99?'99+':totalNum}})"
+  bind:submit="onClickButton"
+  disabled="{{totalNum===0}}"
 >
   <van-checkbox value="{{allFlag}}" bind:change="selectAll" > 全选
   </van-checkbox>

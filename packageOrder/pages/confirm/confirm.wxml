@@ -1,0 +1,3 @@
+<van-cell  wx:if="{{flag}}" bind:click="toAddresslist" title="周剑 18373963522" size="large" center is-link label="湖南省衡阳市蒸湘区南华大学" />
+<van-cell bind:click="toAddAddress" wx:else title="请添加地址" size="large"  center is-link />
+<view class="borderbg"></view>

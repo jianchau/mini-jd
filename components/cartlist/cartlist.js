@@ -1,5 +1,6 @@
 // components/cartlist/cartlist.js
-import {updateCartFlag,updateCartAllFlag,updateCartNum} from '../../api/cart'
+import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
+import {updateCartFlag,updateCartAllFlag,updateCartNum,deleteCart} from '../../api/cart'
 const app = getApp()
 Component({
   properties: {
@@ -31,7 +32,6 @@ Component({
       const arr = this.data.cartlist
       const index = e.target.dataset.index
       updateCartFlag({cartid:arr[index].cartid,flag:e.detail}).then(res=>{
-        console.log(res);
         arr[index].flag = e.detail
         this.setData({
           cartlist: arr,
@@ -72,5 +72,39 @@ Component({
         })
       })
     },
+   onClickButton(){
+      wx.navigateTo({
+        url: '/packageOrder/pages/confirm/confirm',
+      })
+    },
+    removeItem(e){
+      const { cartid, index } = e.target.dataset 
+      Dialog.confirm({
+        title: '确认删除',
+        message: '你确定要移除这个商品吗？',
+      })
+      .then(() => {
+        console.log(this)
+        const arr = this.data.cartlist
+        deleteCart({
+          cartid,
+          token: app.globalData.token
+        })
+        .then(() => {
+          arr.splice(index, 1)
+          const allFlag = arr.every(item => {
+            return item.flag
+          })
+          this.setData({
+            cartlist: arr,
+            allFlag
+          })
+          // this.triggerEvent('myevent', this.data.cartlist.length)
+        })
+      })
+      .catch(() => {
+        console.log(index)
+      });
+    }
   }
 })

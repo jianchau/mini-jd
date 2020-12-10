@@ -1,0 +1,26 @@
+<van-cell center use-label-slot>
+  <text style="color: #f66">编辑</text>
+  <view slot="title">
+    <text>周剑</text>
+    <text>18373963522</text>
+  </view>
+  <view slot="label" style="min-width: 210px">
+    广东省深圳市宝安区西部硅谷
+  </view>
+  <view slot="icon" style="margin-right: 15px">
+    <van-checkbox value="checked" checked-color="#f66"></van-checkbox>
+  </view>
+</van-cell>
+
+<view class="addressbottom">
+  <view bindtap="importfromwx">
+      <van-image 
+      width="20" 
+      height="20" 
+      image-class="wechatimg"
+      custom-class="viewimg"
+      src="/resources/wechat.png" />
+      <text>微信导入</text>
+  </view>
+  <view bindtap="toAddAddress">新增收货地址</view>
+</view>

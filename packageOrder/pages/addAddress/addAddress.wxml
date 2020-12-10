@@ -1,0 +1,46 @@
+<van-cell-group>
+  <van-field
+    required
+    label="收货人"
+    placeholder="姓名"
+    icon="orders-o"
+    bind:change="handleName"
+  />
+  <van-field
+    required
+    clearable
+    label="联系方式"
+    placeholder="手机号码"
+    bind:change="handleNumber"
+  />
+  <van-field
+    required
+    label="所在地区"
+    placeholder="请选择"
+    readonly
+  />
+  <van-field
+    required
+    clearable
+    label="详细地址"
+    autosize
+    placeholder="请填写街道，小区，楼栋号，单元室等"
+    bind:change="handleAddress"
+  />
+  <van-cell title="设置默认地址" size="large" center use-label-slot>
+    <view slot="label" style="font-size: 12px;min-width: 210px">提醒：每次下单会默认推荐使用该地址</view>
+    <van-switch active-color="#f66" checked="false" bind:change="handleDefaultStatus"/>
+  </van-cell>
+</van-cell-group>
+
+<van-button disabled="{{false}}" round block color="#f66" custom-style="width: 90%;margin-top: 10px" bind:click="saveAddress">
+  保存并使用该地址
+</van-button>
+<van-button disabled="{{false}}" round block custom-style="width: 90%;margin-top: 10px">
+  <van-image
+  width="20px"
+  height="20px"
+  custom-class="wechatimg"
+  src="/resources/wechat.png"
+/>从微信导入地址
+</van-button>

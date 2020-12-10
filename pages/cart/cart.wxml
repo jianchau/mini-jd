@@ -2,5 +2,6 @@
 <view wx:else>
   <cartlist cartlist="{{cartlist}}" ></cartlist>
 </view>
+<van-dialog id="van-dialog" />
 <van-divider contentPosition="center">猜你喜欢</van-divider>
 <prolist prolist="{{ recommendlist }}"/>

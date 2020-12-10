@@ -1,0 +1,38 @@
+/* packageOrder/pages/address/address.wxss */
+/* packageOrder/pages/address/address.wxss */
+.addressbottom {
+  position: fixed;
+  height: 50px;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  display: flex;
+}
+.addressbottom view:nth-child(1),
+.addressbottom view:nth-child(2){
+  height: 42px;
+  border: 1rpx solid #ccc;
+  border-radius: 42px;
+  text-align: center;
+  flex: 1;
+  line-height: 42px;
+  margin: 0 2% 4px;
+}
+
+.addressbottom view:nth-child(1) {
+  display: flex;
+  justify-content: center;
+  margin-right: 1%;
+}
+.addressbottom view:nth-child(2) {
+  margin-left: 1%;
+  background-color: #f66;
+  color: #fff;
+}
+.wechatimg{
+  margin-top:11px;
+}
+.viewimg {
+  border:none !important;
+  border-radius: 0 !important
+}

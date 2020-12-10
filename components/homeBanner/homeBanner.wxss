@@ -1,20 +1,2 @@
-/* components/homeBanner/homeBanner.wxss */
-.swiper-img{
-  width:100%;
-  height:100%;
-}
-.banner-tips{
-  display:flex;
-  align-items: center;
-}
-.banner-tip{
-  height:26px;
-  flex:1;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  background-color:gray;
-}
-.banner-tip-active{
-  background-color:#f66
-}
+/* components/homeBanner/homeBanner.wxss */ 
+
