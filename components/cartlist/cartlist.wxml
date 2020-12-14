@@ -9,15 +9,19 @@
         {{ item.proname }}
       </view>
       <view class="itemprice" slot="price" >
-        {{ item.originprice }}
+        <text style="text-decoration:line-through;margin-right:10px">原价:￥{{item.originprice}}</text><text>现价:¥{{ item.showPrice }}</text>.{{ item.otherPrice }}
       </view>
       <view class="itemright" slot="num">
         <van-stepper value="{{ item.num }}" data-index="{{index}}" bind:change="onNumChange" />
       </view>
   </van-card>
-  <view style="background-color:#f66;width:65px;height:100%;color:#fff;text-align:center;line-height: 100px" slot="right" data-cartid="{{item.cartid}}" data-index="{{index}}" bindtap="removeItem">删除</view>
-
+  <view style="background-color:#f66;width:65px;height:100%;color:#fff;text-align:center;line-height: 100px" slot="right" 
+  data-cartid="{{item.cartid}}" 
+  data-index="{{index}}" 
+  bindtap="removeItem">删除
+  </view>
 </van-swipe-cell>
+
 <van-submit-bar
   price="{{ totalPrice*100}}"
   button-text="去结算({{totalNum>99?'99+':totalNum}})"

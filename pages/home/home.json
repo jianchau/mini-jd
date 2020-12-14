@@ -2,6 +2,7 @@
   "usingComponents": {
     "homeBanner":"/components/homeBanner/homeBanner",
     "homeNav":"/components/homeNav/homeNav",
-    "homeList":"/components/homeList/homeList"
+    "homeList":"/components/homeList/homeList",
+    "van-icon": "@vant/weapp/icon/index"
   }
 }

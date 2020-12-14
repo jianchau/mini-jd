@@ -1,3 +1,11 @@
 <homeBanner></homeBanner>
 <homeNav></homeNav>
 <homeList proData="{{proData}}"></homeList>
+<view wx:if="{{flag}}">
+  <van-icon 
+    name="/resources/backToTop.png"
+    custom-class="backToTopImg"
+    size="40px" 
+    bind:click="backToTop"
+  />
+</view>

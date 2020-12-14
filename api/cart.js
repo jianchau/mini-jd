@@ -27,3 +27,9 @@ export function getCartItems(params){
 export function deleteCart (params) {
   return request.get('/api/cart/deleteCart', params)
 }
+export function getCartGoing (params){
+  return request.get('/api/cart/cartGoing',params)
+}
+export function removeCartGoing (params) {
+  return request.get('/api/cart/removeCartGoing',params)
+}

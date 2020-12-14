@@ -4,20 +4,22 @@
     label="收货人"
     placeholder="姓名"
     icon="orders-o"
-    bind:change="handleName"
+    bind:change="handleUserName"
   />
   <van-field
     required
     clearable
     label="联系方式"
     placeholder="手机号码"
-    bind:change="handleNumber"
+    bind:change="handleTelNumber"
   />
   <van-field
+    value="{{pcc}}"
     required
     label="所在地区"
     placeholder="请选择"
     readonly
+    bindtap="showAddressPicker"
   />
   <van-field
     required
@@ -25,22 +27,36 @@
     label="详细地址"
     autosize
     placeholder="请填写街道，小区，楼栋号，单元室等"
-    bind:change="handleAddress"
+    bind:change="handleDetailInfo"
   />
-  <van-cell title="设置默认地址" size="large" center use-label-slot>
+  <van-cell 
+    title="设置默认地址" size="large" center use-label-slot>
     <view slot="label" style="font-size: 12px;min-width: 210px">提醒：每次下单会默认推荐使用该地址</view>
-    <van-switch active-color="#f66" checked="false" bind:change="handleDefaultStatus"/>
+    <van-switch active-color="#f66" checked="{{isDefault}}" bind:change="handleDefaultStatus"/>
   </van-cell>
 </van-cell-group>
-
+<van-overlay 
+  show="{{ visiable }}"
+  bind:click="onClickHide"
+ >
+  <view class="wrapper" catch:tap="noop">
+    <van-area 
+      area-list="{{ areaList }}" 
+      columns-placeholder="{{ ['请选择', '请选择', '请选择'] }}"
+      bind:confirm = "getAddress"
+      bind:cancel = "cancelAddress"
+    />
+  </view>
+</van-overlay>
 <van-button disabled="{{false}}" round block color="#f66" custom-style="width: 90%;margin-top: 10px" bind:click="saveAddress">
   保存并使用该地址
 </van-button>
-<van-button disabled="{{false}}" round block custom-style="width: 90%;margin-top: 10px">
+<van-button disabled="{{false}}" round block custom-style="width: 90%;margin-top: 10px" bind:click="imprtfromwx">
   <van-image
-  width="20px"
-  height="20px"
-  custom-class="wechatimg"
-  src="/resources/wechat.png"
-/>从微信导入地址
+    width="20px"
+    height="20px"
+    image-class="wechatimg"
+    src="/resources/wechat.png"
+  />
+  从微信导入地址
 </van-button>

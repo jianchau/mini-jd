@@ -6,6 +6,8 @@
     "van-cell-group": "@vant/weapp/cell-group/index",
     "van-switch": "@vant/weapp/switch/index",
     "van-button": "@vant/weapp/button/index",
-    "van-image": "@vant/weapp/image/index"
+    "van-image": "@vant/weapp/image/index",
+    "van-overlay": "@vant/weapp/overlay/index",
+    "van-area": "@vant/weapp/area/index"
   }
 }

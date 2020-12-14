@@ -15,7 +15,7 @@ Component({
     "cartlist": function (cartlist) {
       const flag = this.data.cartlist.every(item => item.flag)
       const totalPrice = cartlist.reduce((sum, item) => {
-        return item.flag ? item.originprice * item.num + sum : sum + 0
+        return item.flag ? ((((item.originprice * item.num *item.discount/10).toFixed(2)*1 + sum)*1).toFixed(2))*1 : sum + 0
       }, 0)
       const totalNum = cartlist.reduce((sum, item) => {
         return item.flag ? item.num + sum : sum + 0
@@ -84,7 +84,6 @@ Component({
         message: '你确定要移除这个商品吗？',
       })
       .then(() => {
-        console.log(this)
         const arr = this.data.cartlist
         deleteCart({
           cartid,
@@ -99,11 +98,10 @@ Component({
             cartlist: arr,
             allFlag
           })
-          // this.triggerEvent('myevent', this.data.cartlist.length)
         })
       })
-      .catch(() => {
-        console.log(index)
+      .catch((err) => {
+        console.log(err)
       });
     }
   }

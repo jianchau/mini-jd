@@ -39,14 +39,19 @@ Page({
           listarr[x]=listarr[listarr.length-1-x];
           listarr[listarr.length-1-x]=temp;
         }
-        console.log(listarr);
+        listarr.map(item => {
+          const price = (item.originprice * item.discount / 10).toFixed(2) + ''
+          price.indexOf('.') !== -1 ? (item.showPrice = price.split('.')[0]) : (item.showPrice = price)
+          price.indexOf('.') !== -1 ? item.otherPrice = price.split('.')[1] : item.otherPrice = '00'
+        })
         this.setData({
-          cartlist: res.data.data,
+          cartlist: listarr,
           emptyFlag: false
         })
       }
     })
     .catch(err=>console.log(err))
+
     cartRecommend({
       token: app.globalData.token,
     })

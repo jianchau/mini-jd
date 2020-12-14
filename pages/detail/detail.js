@@ -1,8 +1,9 @@
 import { getProDetail } from './../../api/pro'
 import {addCartFn,getCartItems} from './../../api/cart'
-import {getItem} from '../../utils/storage'
+import {getItem} from '../../utils/storage' 
 const app = getApp()
 Page({
+
   data: {
     banners: [],
     proid: '',
@@ -63,12 +64,15 @@ Page({
           })
         } 
         else {
-          
           wx.showToast({           
             title: '加入购物车成功',
             icon: 'none'
           })
-          this.setData({cartItems:this.data.cartItems+1})
+          getCartItems({userid:this.data.userid}).then(res=>{
+            this.setData({
+              cartItems:res.data.data
+            })
+          })
         }
       }).catch(err=>console.log(err))
     } 

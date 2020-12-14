@@ -66,6 +66,18 @@
           "pathName": "pages/login/login",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "packageOrder/pages/addAddress/addAddress",
+          "pathName": "packageOrder/pages/addAddress/addAddress",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "packageOrder/pages/confirm/confirm",
+          "pathName": "packageOrder/pages/confirm/confirm",
+          "query": "",
+          "scene": null
         }
       ]
     }

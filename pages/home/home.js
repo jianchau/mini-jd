@@ -2,7 +2,14 @@ import {getProList} from '../../api/pro'
 Page({
   data: {
     proData:[],
-    count:1
+    count:1,
+    flag:false
+  },
+  backToTop:function(){
+    wx.pageScrollTo({
+      scrollTop: 0,
+      duration: 300
+    })
   },
   onLoad: function (options) {
     getProList({count:this.data.count,limitNum:20}).then(res=>{
@@ -18,7 +25,11 @@ Page({
       })
     })
   },
-
+  onPageScroll:function({scrollTop}){
+    this.setData({
+      flag:(scrollTop>=300)?true:false
+    })
+  },
   onReady: function () {
 
   },

@@ -17,7 +17,7 @@ Component({
   
   attached(){
     getBannerlist().then(res=>{
-      this.setData({
+      res.data.data&&this.setData({
         bannerlist:res.data.data.splice(0,4),
       })
       let arr = [];
@@ -27,7 +27,7 @@ Component({
       this.setData({
         altarr:arr
       })  
-    })
+    }).catch(err=>console.log(err))
   },
 
   methods: {

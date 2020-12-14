@@ -11,3 +11,8 @@
 .swiper .wx-swiper-dot.wx-swiper-dot-active{
   background-color: orange;
 }
+.backToTopImg{
+  position: fixed !important;
+  right: 20px;
+  bottom:20px
+}
