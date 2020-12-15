@@ -36,7 +36,11 @@ Page({
     })
     .then(res => {
       removeCartGoing({userid:app.globalData.userid,token:app.globalData.token})
-      .then(res=>console.log(res))
+      .then(res=>{
+        wx.navigateTo({
+          url: '/packageOrder/pages/pay/pay',
+        })
+      })
     })
     .catch(err=>console.log(err))
 

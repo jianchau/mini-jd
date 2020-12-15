@@ -19,7 +19,8 @@
       "pages": [
         "pages/confirm/confirm",
         "pages/address/address",
-        "pages/addAddress/addAddress"
+        "pages/addAddress/addAddress",
+        "pages/pay/pay"
       ]
     },
     {
